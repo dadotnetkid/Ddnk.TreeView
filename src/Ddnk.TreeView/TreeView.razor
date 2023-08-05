@@ -1,0 +1,6 @@
+﻿@typeparam T where T: Ddnk.TreeViews.Models.ITreeView
+
+@foreach (var node in DataSource)
+{
+    <TreeViewNode Level="1" Node="node"></TreeViewNode>
+}

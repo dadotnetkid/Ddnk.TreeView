@@ -1,0 +1,30 @@
+﻿@using Ddnk.TreeViews.Models
+@typeparam T where T:Ddnk.TreeViews.Models.ITreeView
+@if (Node is not null)
+{
+    <div class="row " style="padding-left:@(Level==1?0 : Level*3)px" @onclick="Collapse">
+        <div class="col-12">
+            <a>
+                @if (Node.NodeType == NodeType.Folder)
+                {
+                    <i class="fa-solid fa-folder-open"></i>
+                }
+                else
+                {
+                    <i class="fa-regular fa-file"></i>
+                }
+                @Node.Name
+                @if (Node.Children != null && Node.Children.Any() && Node.Collapse)
+                {
+
+                    @foreach (var children in Node.Children)
+                    {
+                        <TreeViewNode Node="children" Level="Level" />
+                    }
+                }
+
+            </a>
+        </div>
+    </div>
+}
+
